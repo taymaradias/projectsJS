@@ -1,12 +1,16 @@
-const HOURHANDs = document.querySelector("#hour");
-const MINUTEHANDs = document.querySelector("#minute");
-const SECONDHANDs = document.querySelector("#second");
+const HOUR = document.querySelectorAll("#hour");
+const MINUTE = document.querySelectorAll("#minute");
+const SECOND = document.querySelectorAll("#second");
 
-function runTheClock(local,HOURHAND,MINUTEHAND,SECONDHAND) {
+function runClock(local,ind) {
 
-    // var dateLocal = new Date();
-    // let dt = dateLocal.getTime() + dateLocal.getTimezoneOffset()*60000 + offset*3600000;
-    var date = moment().tz(local);
+    if (local=='local') {
+        var date = moment();
+    }
+    else {
+        var date = moment().tz(local);
+    }
+
     let hr = date.hour();
     let min = date.minutes();
     let sec = date.seconds();
@@ -15,11 +19,16 @@ function runTheClock(local,HOURHAND,MINUTEHAND,SECONDHAND) {
     let minPosition = (min * 360 / 60) + (sec * (360 / 60) / 60);
     let secPosition = (sec * 360 / 60);
 
-    HOURHAND.style.transform = "rotate(" + hrPosition + "deg)";
-    MINUTEHAND.style.transform = "rotate(" + minPosition + "deg)";
-    SECONDHAND.style.transform = "rotate(" + secPosition + "deg)";
+    HOUR[ind].style.transform = "rotate(" + hrPosition + "deg)";
+    MINUTE[ind].style.transform = "rotate(" + minPosition + "deg)";
+    SECOND[ind].style.transform = "rotate(" + secPosition + "deg)";
 }
 
 
 
-var interval = setInterval(runTheClock, 1000,'America/New_York',HOURHANDs,MINUTEHANDs,SECONDHANDs)
+var intervall = setInterval(runClock, 1000,'Europe/London', 0);
+var intervalny = setInterval(runClock, 1000,'America/New_York', 1);
+var intervalsp = setInterval(runClock, 1000,'America/Sao_Paulo', 2);
+var intervalt = setInterval(runClock, 1000,'Asia/Tokyo', 3);
+var intervals = setInterval(runClock, 1000,'Australia/Sydney', 4);
+var intervals = setInterval(runClock, 1000,'local',5);

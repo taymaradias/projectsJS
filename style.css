@@ -1,66 +1,117 @@
-/* Layout */
-.main {
-    display: flex;
-    padding: 2em;
-    height: 90vh;
-    justify-content: left;
-    align-items: middle;
+html{ 
+    background-color: #000;
 }
 
-.clockbox,
-#clock {
-    width: 100px;
+.main {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column nowrap;
+    padding: 2em;
+    height: auto;
+    margin: 2em;
+    background-color: #000;
+    border: 4px double #fff;
+    /* border-radius: 0%; */
+}
+
+/* Wrap the small clocks */
+#smallclocks {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+/* Align small clocks with the local time */
+.clockbox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Define small clocks size */
+.clockbox #clock {
+    width: 120px;
+    height: 120px;
+    margin: auto;
+}
+
+/* Positioning big clock box */
+#clockboxlocal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-end;
+    flex-grow: 2;
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    margin-top: 4em;
 }
 
 /* Clock styles */
 .circle {
     fill: none;
-    stroke: #000;
+    stroke: #fff;
     stroke-width: 9;
     stroke-miterlimit: 10;
 }
 
 .mid-circle {
-    fill: #000;
+    fill: #fff;
 }
 .hour-marks {
     fill: none;
-    stroke: #000;
+    stroke: #fff;
     stroke-width: 9;
     stroke-miterlimit: 10;
 }
 
 .hour-arm {
     fill: none;
-    stroke: #000;
+    stroke: #fff;
     stroke-width: 17;
     stroke-miterlimit: 10;
 }
 
 .minute-arm {
     fill: none;
-    stroke: #000;
+    stroke: #fff;
     stroke-width: 11;
     stroke-miterlimit: 10;
 }
 
 .second-arm {
     fill: none;
-    stroke: #000;
+    stroke: #fff;
     stroke-width: 4;
     stroke-miterlimit: 10;
 }
 
-/* Transparent box ensuring arms center properly. */
+/* Define names */
+.london, .ny, .sp, .tokyo, .sydney{
+   font-family: Arial, Helvetica, sans-serif;
+   font-family: 'Roboto Mono', monospace;
+   font-size: 12pt;
+   color: #fff;
+}
+.local {
+    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14pt;
+    color: #fff;
+
+}
+
+/* Center clock's arms */
 .sizing-box {
     fill: none;
 }
 
-/* Make all arms rotate around the same center point. */
-/* Optional: Use transition for animation. */
+/* Move the clocks */
 #hour,
 #minute,
 #second {
     transform-origin: 300px 300px;
-    /* transition: transform .5s ease-in-out; */
 }
